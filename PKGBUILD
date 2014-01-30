@@ -10,7 +10,7 @@ depends=('ibus>=1.4' 'pycangjie>=1.0' 'python>=3.2' 'python-gobject')
 conflicts=()
 makedepends=('intltool')
 replaces=('ibus-cangjie-git')
-sha1sums=('SKIP')
+sha256sums=('55118065749ebe633b012509096896e69126382d75fc56dafc2e57eea0e1a8d6')
 source=("http://cangjians.github.io/downloads/ibus-cangjie/$pkgname-$pkgver.tar.xz")
 
 check () {
