@@ -8,9 +8,10 @@ url="http://cangjians.github.io/projects/ibus-cangjie/"
 license=('GPL3')
 depends=('ibus>=1.4' 'pycangjie>=1.0' 'python>=3.2' 'python-gobject')
 conflicts=()
-makedepends=('intltool')
+makedepends=('intltool' 'dconf')
 replaces=('ibus-cangjie-git')
-sha256sums=('55118065749ebe633b012509096896e69126382d75fc56dafc2e57eea0e1a8d6')
+install='ibus-cangjie.install'
+sha1sums=('SKIP')
 source=("http://cangjians.github.io/downloads/ibus-cangjie/$pkgname-$pkgver.tar.xz")
 
 check () {
@@ -20,11 +21,11 @@ check () {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-schemas-compile
   make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="$pkgdir/" install
 }
